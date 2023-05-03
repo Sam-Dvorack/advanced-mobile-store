@@ -20,15 +20,16 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
+    public Customer setCustomerStatus(Customer customer) { return customerRepository.save(customer); }
 
-    public List<Customer> getCustomers(){
+    public List<Customer> getCustomers(){return customerRepository.findAll();}
 
-        return customerRepository.findAll();
-    }
+//    public Optional<Customer> getCustomer(Long id){
+//       return customerRepository.findById(id);
+//    }
 
-
-    public Optional<Customer> getCustomer(Long id){
-       return customerRepository.findById(id);
+    public Customer getCustomer(String emailAddress){
+        return customerRepository.findCustomerByEmailAddress(emailAddress);
     }
 
     public void removeCustomer(Long id){
@@ -40,9 +41,10 @@ public class CustomerService {
         customer.setFirstName(customerDetails.getFirstName());
         customer.setLastName(customerDetails.getLastName());
         customer.setEmailAddress(customerDetails.getEmailAddress());
-
         return customerRepository.save(customer);
     }
+
+
 
 
 }
